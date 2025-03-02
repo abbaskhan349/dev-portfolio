@@ -168,21 +168,16 @@ export default function AboutPage() {
         <h1 className="text-4xl font-bold mb-8">About Me</h1>
         <div className="grid gap-8 md:grid-cols-[2fr_1fr]">
           <div className="space-y-4">
-            <p className="text-lg">
-              Hello! I'm John Doe, a passionate full-stack developer with over 5 years of experience building web
-              applications. I specialize in creating responsive, accessible, and performant web experiences using modern
-              technologies.
+          <p className="text-lg">
+                I’m Muhammad Abbas Khan, a Full Stack Developer with experience of 2+ years and expertise in building scalable web applications using ReactJS, Next.js, TypeScript, Node.js, and cloud technologies like AWS Amplify and Firebase Cloud Messaging (FCM).
             </p>
             <p>
-              My journey in web development began during my university years, where I discovered my passion for creating
-              digital solutions. Since then, I've worked with startups and established companies, helping them build
-              products that users love.
+                Over the past few years, I’ve worked on diverse projects, including developing CRM systems , admin dashboards , and 2D/3D design software using tools like Three.js, Canvas, and D3.js. For example, I built a Client Appointments Management System for an aesthetic company, integrating features like POS and accounting. I’ve also collaborated on surveillance system design software and contributed to projects like Lanza Jobs , a local hiring platform, and a real estate and vehicle ad-posting site.
             </p>
             <p>
-              I believe in writing clean, maintainable code and staying up-to-date with the latest industry trends and
-              best practices. When I'm not coding, you can find me hiking, reading tech blogs, or contributing to
-              open-source projects.
+                What drives me is solving complex problems through clean, efficient code and delivering solutions that make a tangible impact. I’m passionate about leveraging my skills in frontend and backend development to create seamless user experiences and robust systems.
             </p>
+
             <div className="flex space-x-4 pt-4">
               <Link href="https://github.com/abbaskhan349" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
                 <Github className="h-6 w-6" />
@@ -195,10 +190,10 @@ export default function AboutPage() {
               >
                 <Linkedin className="h-6 w-6" />
               </Link>
-              <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+              {/* <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
                 <Twitter className="h-6 w-6" />
-              </Link>
-              <Link href="mailto:contact@example.com" className="hover:text-primary">
+              </Link> */}
+              <Link href="mailto:mabbask440@gmail.com" className="hover:text-primary">
                 <Mail className="h-6 w-6" />
               </Link>
             </div>

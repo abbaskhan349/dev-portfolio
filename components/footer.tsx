@@ -59,7 +59,7 @@ export default function Footer() {
 
         <div className="mt-8 border-t pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} DevPortfolio. All rights reserved.
+            © {new Date().getFullYear()} Muhammad Abbas. All rights reserved.
           </p>
           <div className="mt-4 md:mt-0 flex space-x-4">
             <Link href="/privacy" className="text-xs text-muted-foreground hover:text-primary">
