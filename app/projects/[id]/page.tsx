@@ -274,7 +274,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 </Card>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {project.details.images.map((image, index) => (
+                  {project.details?.images?.map((image, index) => (
                     <div key={index} className="overflow-hidden rounded-lg border">
                       <Image
                         src={image || "/placeholder.svg"}
