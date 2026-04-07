@@ -33,8 +33,10 @@ export default async function ProjectDetailPage({
             <div className="space-y-6">
               <Reveal delay={0.04}>
                 <div className="flex flex-wrap gap-2">
-                  <Badge>{project.year}</Badge>
-                  <Badge className="text-foreground/70">{project.role}</Badge>
+                  <Badge>{project.year ?? "—"}</Badge>
+                  <Badge className="text-foreground/70">
+                    {project.role ?? "Project"}
+                  </Badge>
                 </div>
               </Reveal>
 
@@ -46,9 +48,7 @@ export default async function ProjectDetailPage({
 
               <Reveal delay={0.12}>
                 <p className="max-w-2xl text-pretty text-lg leading-8 text-foreground/70">
-                  {project.tagline} This is a placeholder case study with the
-                  final layout structure: overview, highlights, stack, gallery,
-                  and outcomes.
+                  {project.tagline}
                 </p>
               </Reveal>
 
@@ -77,10 +77,14 @@ export default async function ProjectDetailPage({
                   <Badge>Case study</Badge>
                 </div>
                 <div className="mt-6 grid gap-3">
-                  <ButtonLink href="#" className="justify-between">
+                  <ButtonLink href={project.demoUrl ?? "#"} className="justify-between">
                     Live preview <ArrowUpRight className="h-4 w-4" />
                   </ButtonLink>
-                  <ButtonLink href="#" variant="secondary" className="justify-between">
+                  <ButtonLink
+                    href={project.githubUrl ?? "#"}
+                    variant="secondary"
+                    className="justify-between"
+                  >
                     Source code <ArrowUpRight className="h-4 w-4" />
                   </ButtonLink>
                 </div>
@@ -121,9 +125,7 @@ export default async function ProjectDetailPage({
                   The problem, the constraints, and the system.
                 </h2>
                 <p className="text-pretty leading-7 text-foreground/70">
-                  This space will later become your real write-up. For now, it’s
-                  designed to read like a high-signal thread: short paragraphs,
-                  bold statements, and scannable details.
+                  {project.details.overview}
                 </p>
               </div>
             </Reveal>
@@ -134,7 +136,7 @@ export default async function ProjectDetailPage({
                   Highlights
                 </div>
                 <ul className="mt-4 grid gap-3 text-sm text-foreground/75">
-                  {project.highlights.map((h) => (
+                  {project.details.features.map((h) => (
                     <li key={h} className="flex gap-2">
                       <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full border border-foreground/10 bg-background/40">
                         <Check className="h-3.5 w-3.5 text-foreground/70" />
@@ -143,6 +145,29 @@ export default async function ProjectDetailPage({
                     </li>
                   ))}
                 </ul>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="mt-10 grid gap-4 lg:grid-cols-2">
+            <Reveal>
+              <div className="rounded-3xl border border-foreground/10 bg-background/30 p-6 backdrop-blur">
+                <div className="text-sm font-semibold tracking-tight">
+                  Challenges
+                </div>
+                <p className="mt-3 text-pretty leading-7 text-foreground/70">
+                  {project.details.challenges}
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <div className="rounded-3xl border border-foreground/10 bg-background/30 p-6 backdrop-blur">
+                <div className="text-sm font-semibold tracking-tight">
+                  Solutions
+                </div>
+                <p className="mt-3 text-pretty leading-7 text-foreground/70">
+                  {project.details.solutions}
+                </p>
               </div>
             </Reveal>
           </div>

@@ -62,9 +62,9 @@ export default function ProjectsPage() {
                 >
                   <div className="space-y-2">
                     <div className="flex flex-wrap items-center gap-2 text-xs font-medium tracking-tight text-foreground/60">
-                      <span>{p.year}</span>
+                      <span>{p.year ?? "—"}</span>
                       <span className="h-1 w-1 rounded-full bg-foreground/30" />
-                      <span>{p.role}</span>
+                      <span>{p.role ?? "Project"}</span>
                       <span className="h-1 w-1 rounded-full bg-foreground/30" />
                       <span>{p.stack.slice(0, 2).join(" · ")}</span>
                     </div>
