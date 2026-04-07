@@ -20,6 +20,9 @@ export default function Home() {
                     {site.availability}
                   </Badge>
                   <Badge className="text-foreground/70">{site.location}</Badge>
+                  <Badge className="text-foreground/70">React</Badge>
+                  <Badge className="text-foreground/70">Next.js</Badge>
+                  <Badge className="text-foreground/70">AWS</Badge>
                 </div>
               </Reveal>
 
@@ -122,7 +125,7 @@ export default function Home() {
           </div>
 
           <div className="mt-10 grid gap-4 md:grid-cols-2">
-            {projects.slice(0, 2).map((p, idx) => (
+            {projects.filter((p) => p.featured).slice(0, 2).map((p, idx) => (
               <Reveal key={p.slug} delay={0.06 + idx * 0.05}>
                 <Link
                   href={`/projects/${p.slug}`}
@@ -137,7 +140,7 @@ export default function Home() {
                     <div className="flex items-start justify-between gap-4">
                       <div className="space-y-1">
                         <div className="text-xs font-medium tracking-tight text-foreground/60">
-                          {p.year} · {p.role}
+                          {(p.year ?? "—") + " · " + (p.role ?? "Project")}
                         </div>
                         <div className="text-xl font-semibold tracking-tight">
                           {p.title}
@@ -158,7 +161,7 @@ export default function Home() {
                       ))}
                     </div>
                     <ul className="grid gap-2 text-sm text-foreground/70">
-                      {p.highlights.slice(0, 2).map((h) => (
+                      {p.details.features.slice(0, 2).map((h) => (
                         <li key={h} className="flex gap-2">
                           <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-foreground/35" />
                           <span className="text-pretty">{h}</span>
@@ -178,7 +181,7 @@ export default function Home() {
                       Focus
                     </div>
                     <div className="text-xl font-semibold tracking-tight">
-                      Black & white UI, sharp typography, strong systems.
+                      Black & white UI, sharp typography, strong systems (AWS).
                     </div>
                     <div className="text-sm leading-7 text-foreground/70">
                       Inspired by the density of X and the calm minimalism of
@@ -190,6 +193,7 @@ export default function Home() {
                     {[
                       "Design systems",
                       "APIs",
+                      "AWS",
                       "Performance",
                       "Accessibility",
                       "DX",
