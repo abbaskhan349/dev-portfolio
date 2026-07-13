@@ -8,9 +8,7 @@ export function SiteFooter() {
       <Container className="flex flex-col gap-8 py-10 md:flex-row md:items-center md:justify-between">
         <div className="space-y-2">
           <div className="text-sm font-semibold tracking-tight">{site.name}</div>
-          <div className="text-sm text-foreground/60">
-            Black/white portfolio template — placeholders for now.
-          </div>
+          <div className="text-sm text-foreground/60">{site.title}</div>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">

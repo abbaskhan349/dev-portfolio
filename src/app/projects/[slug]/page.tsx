@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Check, Lock } from "lucide-react";
 import { Container } from "@/components/Container";
 import { Reveal } from "@/components/motion/Reveal";
 import { Badge } from "@/components/ui/Badge";
@@ -66,46 +67,33 @@ export default async function ProjectDetailPage({
             <Reveal delay={0.14}>
               <div className="rounded-3xl border border-foreground/10 bg-background/30 p-6 backdrop-blur">
                 <div className="flex items-start justify-between gap-4">
-                  <div className="space-y-1">
-                    <div className="text-sm font-semibold tracking-tight">
-                      Project links
-                    </div>
-                    <div className="text-sm text-foreground/60">
-                      Placeholder buttons
-                    </div>
+                  <div className="text-sm font-semibold tracking-tight">
+                    Project links
                   </div>
                   <Badge>Case study</Badge>
                 </div>
                 <div className="mt-6 grid gap-3">
-                  <ButtonLink href={project.demoUrl ?? "#"} className="justify-between">
-                    Live preview <ArrowUpRight className="h-4 w-4" />
-                  </ButtonLink>
-                  <ButtonLink
-                    href={project.githubUrl ?? "#"}
-                    variant="secondary"
-                    className="justify-between"
-                  >
-                    Source code <ArrowUpRight className="h-4 w-4" />
-                  </ButtonLink>
-                </div>
-                <div className="mt-6 grid grid-cols-3 gap-3">
-                  {[
-                    { k: "Scope", v: "8 weeks" },
-                    { k: "Users", v: "B2B" },
-                    { k: "Impact", v: "+23%" },
-                  ].map((m) => (
-                    <div
-                      key={m.k}
-                      className="rounded-2xl border border-foreground/10 bg-background/40 p-3"
+                  {project.demoUrl && (
+                    <ButtonLink href={project.demoUrl} className="justify-between">
+                      Live preview <ArrowUpRight className="h-4 w-4" />
+                    </ButtonLink>
+                  )}
+                  {project.githubUrl ? (
+                    <ButtonLink
+                      href={project.githubUrl}
+                      variant="secondary"
+                      className="justify-between"
                     >
-                      <div className="text-[11px] font-medium tracking-tight text-foreground/60">
-                        {m.k}
-                      </div>
-                      <div className="mt-1 text-sm font-semibold tracking-tight">
-                        {m.v}
-                      </div>
+                      Source code <ArrowUpRight className="h-4 w-4" />
+                    </ButtonLink>
+                  ) : (
+                    <div
+                      aria-disabled="true"
+                      className="inline-flex h-11 cursor-not-allowed items-center justify-between gap-2 rounded-full border border-foreground/10 bg-background/20 px-5 text-sm font-medium tracking-tight text-foreground/40"
+                    >
+                      Private repository <Lock className="h-4 w-4" />
                     </div>
-                  ))}
+                  )}
                 </div>
               </div>
             </Reveal>
@@ -172,26 +160,29 @@ export default async function ProjectDetailPage({
             </Reveal>
           </div>
 
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {["Hero", "Dashboard", "Flow"].map((label, idx) => (
-              <Reveal key={label} delay={0.05 + idx * 0.05}>
-                <div className="relative overflow-hidden rounded-3xl border border-foreground/10 bg-background/30 p-6 backdrop-blur">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
+          {project.images && project.images.length > 0 && (
+            <div className="mt-10 grid gap-4 md:grid-cols-3">
+              {project.images.map((image, idx) => (
+                <Reveal key={image.src} delay={0.05 + idx * 0.05}>
+                  <div className="relative overflow-hidden rounded-3xl border border-foreground/10 bg-background/30 p-6 backdrop-blur">
+                    <div className="flex items-start justify-between gap-4">
                       <div className="text-sm font-semibold tracking-tight">
-                        {label} mock
+                        {image.label}
                       </div>
-                      <div className="text-sm text-foreground/60">
-                        Placeholder preview
-                      </div>
+                      <Badge>PNG</Badge>
                     </div>
-                    <Badge>PNG</Badge>
+                    <Image
+                      src={image.src}
+                      alt={image.label}
+                      width={480}
+                      height={320}
+                      className="mt-6 h-32 w-full rounded-2xl border border-foreground/10 object-cover"
+                    />
                   </div>
-                  <div className="mt-6 h-32 rounded-2xl border border-foreground/10 bg-[linear-gradient(135deg,rgba(255,255,255,.06),transparent_55%),linear-gradient(225deg,rgba(255,255,255,.04),transparent_60%)] dark:bg-[linear-gradient(135deg,rgba(255,255,255,.05),transparent_55%),linear-gradient(225deg,rgba(255,255,255,.03),transparent_60%)]" />
-                </div>
-              </Reveal>
-            ))}
-          </div>
+                </Reveal>
+              ))}
+            </div>
+          )}
         </Container>
       </section>
     </div>

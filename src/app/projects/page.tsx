@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Search } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/Container";
 import { Reveal } from "@/components/motion/Reveal";
 import { Badge } from "@/components/ui/Badge";
@@ -21,8 +21,9 @@ export default function ProjectsPage() {
                   Work that’s built to last.
                 </h1>
                 <p className="max-w-2xl text-pretty text-lg leading-8 text-foreground/70">
-                  A curated selection with placeholder case studies for now.
-                  Each project page shows structure, typography, and motion.
+                  A selection of shipped products, client platforms, and
+                  internal tools spanning CRMs, admin dashboards, and design
+                  systems.
                 </p>
               </div>
               <ButtonLink href="/contact" variant="secondary" size="sm">
@@ -32,20 +33,14 @@ export default function ProjectsPage() {
           </Reveal>
 
           <Reveal delay={0.08} className="mt-8">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex items-center gap-2 rounded-full border border-foreground/10 bg-background/30 px-4 py-2 text-sm text-foreground/70 backdrop-blur">
-                <Search className="h-4 w-4 text-foreground/50" />
-                <span>Search (placeholder)</span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {["All", "Full‑stack", "Frontend", "Backend", "Systems"].map(
-                  (t) => (
-                    <Badge key={t} className="cursor-default">
-                      {t}
-                    </Badge>
-                  ),
-                )}
-              </div>
+            <div className="flex flex-wrap gap-2">
+              {["All", "Full‑stack", "Frontend", "Backend", "Systems"].map(
+                (t) => (
+                  <Badge key={t} className="cursor-default">
+                    {t}
+                  </Badge>
+                ),
+              )}
             </div>
           </Reveal>
         </Container>

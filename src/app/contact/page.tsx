@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { ArrowUpRight, Mail } from "lucide-react";
+import { ArrowUpRight, Mail, Phone } from "lucide-react";
 import { Container } from "@/components/Container";
 import { Reveal } from "@/components/motion/Reveal";
-import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
+import { ButtonLink } from "@/components/ui/Button";
 import { site } from "@/lib/site";
 
 export default function ContactPage() {
@@ -23,8 +22,8 @@ export default function ContactPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-4 max-w-2xl text-pretty text-lg leading-8 text-foreground/70">
-              This is a design-only form (placeholders). Later we can wire email,
-              a backend endpoint, or a service like Resend.
+              Tell me about your project, timeline, and constraints — I read
+              every message personally.
             </p>
           </Reveal>
         </Container>
@@ -35,60 +34,34 @@ export default function ContactPage() {
           <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-start">
             <Reveal>
               <div className="rounded-3xl border border-foreground/10 bg-background/30 p-6 backdrop-blur">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="space-y-1">
-                    <div className="text-sm font-semibold tracking-tight">
-                      Send a message
-                    </div>
-                    <div className="text-sm text-foreground/60">
-                      Placeholder fields
-                    </div>
-                  </div>
-                  <Badge>Form</Badge>
+                <div className="text-sm font-semibold tracking-tight">
+                  Get in touch
+                </div>
+                <div className="mt-1 text-sm text-foreground/60">
+                  Reach me directly — whichever is easiest for you.
                 </div>
 
-                <form className="mt-6 grid gap-4">
-                  <div className="grid gap-2">
-                    <label className="text-sm font-medium tracking-tight text-foreground/80">
-                      Name
-                    </label>
-                    <input
-                      placeholder="Your name"
-                      className="h-11 rounded-2xl border border-foreground/10 bg-background/40 px-4 text-sm outline-none ring-offset-background placeholder:text-foreground/40 focus-visible:ring-2 focus-visible:ring-foreground/30 focus-visible:ring-offset-2"
-                    />
-                  </div>
-                  <div className="grid gap-2">
-                    <label className="text-sm font-medium tracking-tight text-foreground/80">
-                      Email
-                    </label>
-                    <input
-                      placeholder="you@company.com"
-                      className="h-11 rounded-2xl border border-foreground/10 bg-background/40 px-4 text-sm outline-none ring-offset-background placeholder:text-foreground/40 focus-visible:ring-2 focus-visible:ring-foreground/30 focus-visible:ring-offset-2"
-                    />
-                  </div>
-                  <div className="grid gap-2">
-                    <label className="text-sm font-medium tracking-tight text-foreground/80">
-                      Message
-                    </label>
-                    <textarea
-                      placeholder="What are you building?"
-                      rows={6}
-                      className="rounded-2xl border border-foreground/10 bg-background/40 px-4 py-3 text-sm outline-none ring-offset-background placeholder:text-foreground/40 focus-visible:ring-2 focus-visible:ring-foreground/30 focus-visible:ring-offset-2"
-                    />
-                  </div>
-                  <div className="flex flex-wrap items-center gap-3 pt-2">
-                    <Button type="button">
-                      Send message <ArrowUpRight className="h-4 w-4" />
-                    </Button>
-                    <Link
-                      href={`mailto:${site.email}`}
-                      className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium tracking-tight text-foreground/70 hover:text-foreground hover:bg-foreground/[0.04]"
-                    >
-                      <Mail className="h-4 w-4" />
-                      {site.email}
-                    </Link>
-                  </div>
-                </form>
+                <div className="mt-6 grid gap-3">
+                  <ButtonLink
+                    href={`mailto:${site.email}`}
+                    className="justify-between"
+                  >
+                    <span className="inline-flex items-center gap-2">
+                      <Mail className="h-4 w-4" /> {site.email}
+                    </span>
+                    <ArrowUpRight className="h-4 w-4" />
+                  </ButtonLink>
+                  <ButtonLink
+                    href={`tel:${site.phone.replace(/\s/g, "")}`}
+                    variant="secondary"
+                    className="justify-between"
+                  >
+                    <span className="inline-flex items-center gap-2">
+                      <Phone className="h-4 w-4" /> {site.phone}
+                    </span>
+                    <ArrowUpRight className="h-4 w-4" />
+                  </ButtonLink>
+                </div>
               </div>
             </Reveal>
 
@@ -139,4 +112,3 @@ export default function ContactPage() {
     </div>
   );
 }
-

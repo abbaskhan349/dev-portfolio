@@ -124,8 +124,8 @@ export default function Home() {
             </Reveal>
           </div>
 
-          <div className="mt-10 grid gap-4 md:grid-cols-2">
-            {projects.filter((p) => p.featured).slice(0, 2).map((p, idx) => (
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {projects.filter((p) => p.featured).slice(0, 3).map((p, idx) => (
               <Reveal key={p.slug} delay={0.06 + idx * 0.05}>
                 <Link
                   href={`/projects/${p.slug}`}
@@ -172,39 +172,6 @@ export default function Home() {
                 </Link>
               </Reveal>
             ))}
-
-            <Reveal delay={0.18} className="md:row-span-1">
-              <div className="relative h-full overflow-hidden rounded-3xl border border-foreground/10 bg-background/30 p-6 backdrop-blur">
-                <div className="flex h-full flex-col justify-between gap-10">
-                  <div className="space-y-2">
-                    <div className="text-xs font-medium tracking-tight text-foreground/60">
-                      Focus
-                    </div>
-                    <div className="text-xl font-semibold tracking-tight">
-                      Black & white UI, sharp typography, strong systems (AWS).
-                    </div>
-                    <div className="text-sm leading-7 text-foreground/70">
-                      Inspired by the density of X and the calm minimalism of
-                      Cursor/ChatGPT—clean grids, subtle borders, and motion that
-                      feels responsive rather than loud.
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      "Design systems",
-                      "APIs",
-                      "AWS",
-                      "Performance",
-                      "Accessibility",
-                      "DX",
-                      "Animations",
-                    ].map((t) => (
-                      <Badge key={t}>{t}</Badge>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </Reveal>
           </div>
 
           <Reveal delay={0.22} className="mt-10 sm:hidden">
@@ -245,10 +212,10 @@ export default function Home() {
                       Quick details
                     </div>
                     <div className="text-sm text-foreground/60">
-                      Placeholder stats + signals
+                      How I like to work
                     </div>
                   </div>
-                  <Badge>Updated weekly</Badge>
+                  <Badge>Available now</Badge>
                 </div>
                 <div className="mt-6 grid gap-4 sm:grid-cols-2">
                   {[

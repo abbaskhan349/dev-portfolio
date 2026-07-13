@@ -2,7 +2,7 @@ import { Container } from "@/components/Container";
 import { Reveal } from "@/components/motion/Reveal";
 import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
-import { education, experience, site, skills } from "@/lib/site";
+import { certifications, education, experience, site, skills } from "@/lib/site";
 
 export default function AboutPage() {
   const skillsByCategory = skills.reduce(
@@ -210,6 +210,34 @@ export default function AboutPage() {
                       <div className="mt-2 text-sm text-foreground/70">
                         {e.description}
                       </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="mt-12 grid gap-4">
+            <Reveal>
+              <div className="rounded-3xl border border-foreground/10 bg-background/30 p-6 backdrop-blur">
+                <div className="text-sm font-semibold tracking-tight">
+                  Certifications
+                </div>
+                <div className="mt-4 grid gap-3">
+                  {certifications.map((c) => (
+                    <div
+                      key={`${c.name}-${c.date}`}
+                      className="flex items-center justify-between gap-4 rounded-2xl border border-foreground/10 bg-background/40 p-4"
+                    >
+                      <div>
+                        <div className="text-sm font-semibold tracking-tight">
+                          {c.name}
+                        </div>
+                        <div className="mt-1 text-sm text-foreground/70">
+                          {c.issuer}
+                        </div>
+                      </div>
+                      <Badge className="text-foreground/70">{c.date}</Badge>
                     </div>
                   ))}
                 </div>
